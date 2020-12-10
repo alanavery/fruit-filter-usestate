@@ -5,23 +5,23 @@ import Input from './Input';
 
 function FruitContainer(props) {
   const [fruitsToDisplay, setFruitsToDisplay] = useState(props.fruits);
-  const [filterValue, setFilterValue] = useState('');
+  const [filteredValue, setFilteredValue] = useState('');
 
   const handleFilterChange = (e) => {
     e.preventDefault();
-    let filterValue = e.target.value;
+    let filteredValue = e.target.value;
     const filteredFruitList = props.fruits.filter((fruit) => {
-      return fruit.toLowerCase().includes(filterValue.toLowerCase());
+      return fruit.toLowerCase().includes(filteredValue.toLowerCase());
     });
     setFruitsToDisplay(filteredFruitList);
-    setFilterValue(filterValue);
+    setFilteredValue(filteredValue);
   };
 
   console.log(props.fruits);
   console.log(fruitsToDisplay);
   return (
     <div>
-      <Input value={filterValue} onChange={handleFilterChange} />
+      <Input value={filteredValue} onChange={handleFilterChange} />
       <List fruits={fruitsToDisplay} />
     </div>
   );
